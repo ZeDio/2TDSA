@@ -1,0 +1,58 @@
+hostname - 
+hostname
+
+hostname -I -
+127.0.0.1
+
+free -h -
+Men: Swap:
+total
+3.8G
+used 85.ZM
+free
+shared
+3.4G
+11.3M
+0
+0
+0
+buff/cache
+available
+320.4M
+3.56
+
+nproc - 
+2
+
+df -h -
+
+Filesystem
+Size
+deutmpfs
+10.0M
+0
+shm
+1.9G
+0
+1.96
+/dev/sro
+347.0M
+347.OM
+tmpfs
+tmpfs
+1.9G 784.1M
+/dev/loop0
+285.9M
+11.3M 44.0K 285.9M
+1.96
+784.0M
+Used Available Use Mounted on
+10.0M 0% /deu
+0% /dev/shm
+0 100% /media/cdrom
+1% /
+0% /run
+0 100%.mod loop
+
+systemctl status ssh -
+-sh: systemctl: not found

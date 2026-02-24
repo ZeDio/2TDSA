@@ -1,0 +1,12 @@
+vm_name: "vm_aula"
+ram_mb: 4096
+cpus: 2
+disk_gb: 3.13
+network_mode: "Intel Pro/1000 MT Desktop (NAT)"
+os: "Oracle Linux (fornecido)"
+ssh_enabled: true
+justification:
+  ram: "4096"
+  cpu: "2"
+  disk: "3.13"
+  network: "Intel Pro/1000 MT Desktop (NAT)"
