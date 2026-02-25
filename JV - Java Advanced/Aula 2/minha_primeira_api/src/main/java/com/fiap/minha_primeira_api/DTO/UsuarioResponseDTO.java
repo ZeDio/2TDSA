@@ -1,14 +1,15 @@
 package com.fiap.minha_primeira_api.DTO;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.RepresentationModel;
+import org.springframework.hateoas.server.core.Relation;
 
 /*
-* DTO (Data Transfer Object) -- Objeto para transferencia de dados
-* Usado para enviar uma resposta ao Cliente sem expor a entidade completa
-* Estende RepresentationModel para incluir links HATEAS
+ * DTO (Data Transfer Object) -- Objeto para transferência de dados
+ * Usado para enviar uma resposta ao cliente sem expor a entidade completa
+ * Estende RepresentationModel para incluir links HATEOAS
  */
 
-import jdk.jfr.Relational;
-
-@Relational(collectionRelation="usuarios",itemRelation="usuarios")
+@Relation(collectionRelation="usuarios",itemRelation="usuario")
 public class UsuarioResponseDTO extends RepresentationModel<UsuarioResponseDTO>{
 
     private Long id;
@@ -16,14 +17,30 @@ public class UsuarioResponseDTO extends RepresentationModel<UsuarioResponseDTO>{
     private String email;
     private int idade;
 
-    public UsuarioResponseDTO() {
-    }
+
 
     public UsuarioResponseDTO(Long id, String nome, String email, int idade) {
+        super();
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.idade = idade;
+    }
+
+    public UsuarioResponseDTO() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+    public UsuarioResponseDTO(Iterable<Link> initialLinks) {
+        super(initialLinks);
+        // TODO Auto-generated constructor stub
+    }
+
+
+    public UsuarioResponseDTO(Link initialLink) {
+        super(initialLink);
+        // TODO Auto-generated constructor stub
     }
 
     public Long getId() {
@@ -58,14 +75,13 @@ public class UsuarioResponseDTO extends RepresentationModel<UsuarioResponseDTO>{
         this.idade = idade;
     }
 
-    // Metedo helper para criar DTO a partir do modelo (model)
-    public static UsuarioResponseDTO fromUsuario(com.fiap.minha_primeira_api.model.Usuario usuario){
-        return new UsuarioResponseDTO(
+    //Método helper para criar DTO a partir do modelo (model)
+    public static UsuarioResponseDTO fromUsuario (com.fiap.minha_primeira_api.model.Usuario usuario) {
+        return new UsuarioResponseDTO (
                 usuario.getId(),
                 usuario.getNome(),
                 usuario.getEmail(),
                 usuario.getIdade()
         );
     }
-
 }
