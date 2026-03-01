@@ -1,0 +1,15 @@
+C:\Users\josed\OneDrive\Área de Trabalho\2TDSA\AN - Advanced Business Development with .NET\Curso C#\aula21\TestProject\bin\Debug\net10.0\TestProject.exe
+C:\Users\josed\OneDrive\Área de Trabalho\2TDSA\AN - Advanced Business Development with .NET\Curso C#\aula21\TestProject\bin\Debug\net10.0\TestProject.deps.json
+C:\Users\josed\OneDrive\Área de Trabalho\2TDSA\AN - Advanced Business Development with .NET\Curso C#\aula21\TestProject\bin\Debug\net10.0\TestProject.runtimeconfig.json
+C:\Users\josed\OneDrive\Área de Trabalho\2TDSA\AN - Advanced Business Development with .NET\Curso C#\aula21\TestProject\bin\Debug\net10.0\TestProject.dll
+C:\Users\josed\OneDrive\Área de Trabalho\2TDSA\AN - Advanced Business Development with .NET\Curso C#\aula21\TestProject\bin\Debug\net10.0\TestProject.pdb
+C:\Users\josed\OneDrive\Área de Trabalho\2TDSA\AN - Advanced Business Development with .NET\Curso C#\aula21\TestProject\obj\Debug\net10.0\TestProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\josed\OneDrive\Área de Trabalho\2TDSA\AN - Advanced Business Development with .NET\Curso C#\aula21\TestProject\obj\Debug\net10.0\TestProject.AssemblyInfoInputs.cache
+C:\Users\josed\OneDrive\Área de Trabalho\2TDSA\AN - Advanced Business Development with .NET\Curso C#\aula21\TestProject\obj\Debug\net10.0\TestProject.AssemblyInfo.cs
+C:\Users\josed\OneDrive\Área de Trabalho\2TDSA\AN - Advanced Business Development with .NET\Curso C#\aula21\TestProject\obj\Debug\net10.0\TestProject.csproj.CoreCompileInputs.cache
+C:\Users\josed\OneDrive\Área de Trabalho\2TDSA\AN - Advanced Business Development with .NET\Curso C#\aula21\TestProject\obj\Debug\net10.0\TestProject.sourcelink.json
+C:\Users\josed\OneDrive\Área de Trabalho\2TDSA\AN - Advanced Business Development with .NET\Curso C#\aula21\TestProject\obj\Debug\net10.0\TestProject.dll
+C:\Users\josed\OneDrive\Área de Trabalho\2TDSA\AN - Advanced Business Development with .NET\Curso C#\aula21\TestProject\obj\Debug\net10.0\refint\TestProject.dll
+C:\Users\josed\OneDrive\Área de Trabalho\2TDSA\AN - Advanced Business Development with .NET\Curso C#\aula21\TestProject\obj\Debug\net10.0\TestProject.pdb
+C:\Users\josed\OneDrive\Área de Trabalho\2TDSA\AN - Advanced Business Development with .NET\Curso C#\aula21\TestProject\obj\Debug\net10.0\TestProject.genruntimeconfig.cache
+C:\Users\josed\OneDrive\Área de Trabalho\2TDSA\AN - Advanced Business Development with .NET\Curso C#\aula21\TestProject\obj\Debug\net10.0\ref\TestProject.dll
