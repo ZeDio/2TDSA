@@ -1,0 +1,1 @@
+let variavel: string | number = "leonardo";
