@@ -80,5 +80,4 @@ public class UsuarioController {
         if (usuario == null){
             return ResponseEntity.notFound().build(); //Status 404
         }
-    }
 }
