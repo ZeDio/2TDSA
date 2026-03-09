@@ -1,0 +1,56 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Challenge-project-debugging-CSharp-main", "Challenge-project-debugging-CSharp-main", "{07B2D109-438C-0452-CB25-19CC6BD6E41F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ChallengeProject", "ChallengeProject", "{3B61C43B-4E59-660A-6760-1B752EBB4A15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Final", "Challenge-project-debugging-CSharp-main\ChallengeProject\Final\Final.csproj", "{00B13B3B-7B4F-AB18-F3AD-26DC14AC712F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Starter", "Challenge-project-debugging-CSharp-main\ChallengeProject\Starter\Starter.csproj", "{77DAD66B-34A9-F9E1-BA93-1774009C47D8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".NET8Projects", ".NET8Projects", "{08B09903-27EB-1647-C0E1-D565F5C26CE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Final", "Challenge-project-debugging-CSharp-main\ChallengeProject\.NET8Projects\Final\Final.csproj", "{7CC7BB66-B4F9-86A9-2A59-396D33C7621C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Starter", "Challenge-project-debugging-CSharp-main\ChallengeProject\.NET8Projects\Starter\Starter.csproj", "{CFA53B32-2164-1650-476D-232E9673EA1E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00B13B3B-7B4F-AB18-F3AD-26DC14AC712F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00B13B3B-7B4F-AB18-F3AD-26DC14AC712F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00B13B3B-7B4F-AB18-F3AD-26DC14AC712F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00B13B3B-7B4F-AB18-F3AD-26DC14AC712F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77DAD66B-34A9-F9E1-BA93-1774009C47D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77DAD66B-34A9-F9E1-BA93-1774009C47D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77DAD66B-34A9-F9E1-BA93-1774009C47D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77DAD66B-34A9-F9E1-BA93-1774009C47D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CC7BB66-B4F9-86A9-2A59-396D33C7621C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CC7BB66-B4F9-86A9-2A59-396D33C7621C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CC7BB66-B4F9-86A9-2A59-396D33C7621C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CC7BB66-B4F9-86A9-2A59-396D33C7621C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFA53B32-2164-1650-476D-232E9673EA1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFA53B32-2164-1650-476D-232E9673EA1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFA53B32-2164-1650-476D-232E9673EA1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFA53B32-2164-1650-476D-232E9673EA1E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3B61C43B-4E59-660A-6760-1B752EBB4A15} = {07B2D109-438C-0452-CB25-19CC6BD6E41F}
+		{00B13B3B-7B4F-AB18-F3AD-26DC14AC712F} = {3B61C43B-4E59-660A-6760-1B752EBB4A15}
+		{77DAD66B-34A9-F9E1-BA93-1774009C47D8} = {3B61C43B-4E59-660A-6760-1B752EBB4A15}
+		{08B09903-27EB-1647-C0E1-D565F5C26CE1} = {3B61C43B-4E59-660A-6760-1B752EBB4A15}
+		{7CC7BB66-B4F9-86A9-2A59-396D33C7621C} = {08B09903-27EB-1647-C0E1-D565F5C26CE1}
+		{CFA53B32-2164-1650-476D-232E9673EA1E} = {08B09903-27EB-1647-C0E1-D565F5C26CE1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EDA568AE-3579-4899-8F39-A53E37F6490C}
+	EndGlobalSection
+EndGlobal
