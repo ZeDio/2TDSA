@@ -1,0 +1,10 @@
+Resumo - So foi de conseitos e leitura
+Neste módulo, exploramos os conceitos de acessibilidade da Web. Você aprendeu a:
+
+Ferramentas que os usuários utilizam para navegar pelas páginas da Web.
+Ferramentas que os desenvolvedores usam para garantir a acessibilidade.
+Habilidades para garantir que suas páginas estejam acessíveis.
+Desafio
+A melhor maneira de entender como tornar as páginas acessíveis e o impacto das decisões tomadas ao criar HTML é usar algumas das ferramentas que os usuários utilizam para navegar na Web.
+
+Navegue por algumas páginas usando um leitor de tela. Abra um site que tenha um formulário e use apenas o teclado para preenchê-lo. Esta atividade dará a você uma noção do que alguns usuários têm no dia a dia ao usar a Web e a importância de garantir que suas páginas estejam acessíveis.
