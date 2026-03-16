@@ -1,0 +1,3 @@
+Resumo
+
+Seu objetivo era escrever um código que exibisse mensagens simples em um console de saída enquanto se familiarizava com a sintaxe. Você escreveu suas primeiras linhas de código usando a sintaxe C# básica. Você aprendeu duas técnicas para exibir dados de cadeia de caracteres literais no console. Você também aprendeu o que procurar quando se depara com um erro em seu código. Por fim, você identificou elementos de sintaxe C#, como classes e métodos, e a finalidade de vários símbolos especiais que são conhecidos como operadores. Você deu seus primeiros passos para criar aplicativos mais sofisticados.

@@ -1,0 +1,3 @@
+Resumo
+
+Neste módulo, você aprendeu as noções básicas do Razor Pages. Você aprendeu a criar uma Página Razor, adicionar um modelo e adicionar um manipulador de página. Você também aprendeu a usar auxiliares de marca para associar elementos HTML a propriedades de modelo e gerar URLs. Além disso, você aprendeu como usar injeção de dependência para injetar um serviço em uma página do Razor.

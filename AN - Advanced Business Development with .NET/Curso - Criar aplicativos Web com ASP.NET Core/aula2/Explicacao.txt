@@ -1,0 +1,11 @@
+Resumo
+
+Neste módulo, você configurou um ambiente de trabalho de desenvolvimento para a Web. Você também criou um site e testou se tudo está funcionando em um navegador da Web. Vamos examinar tudo o que você realizou:
+
+Você baixou e instalou as ferramentas necessárias ao desenvolvimento para a Web e personalizou o editor com pacotes básicos.
+Você criou um diretório do projeto e os arquivos para criar um site.
+Você criou um título e outros elementos de página, em seguida, vinculou-os a arquivos externos e testou a página em um navegador.
+Você aplicou estilos a diferentes elementos, testou seu site no navegador e adicionou suporte para temas usando o CSS.
+Você adicionou JavaScript para habilitar a interação personalizada com a página e a alternância entre temas.
+Você aprendeu como criar e usar mensagens do console para inspecionar dentro do seu código.
+Você está reunindo ferramentas e criando uma base como desenvolvedor da Web. Você pode reutilizar seu site como um modelo para projetos futuros. À medida que suas habilidades e seu conhecimento aumentam, você pode realizar mais da visão que deve ter para o seu site. Ver uma ideia ganhar vida também é algo empoderador.

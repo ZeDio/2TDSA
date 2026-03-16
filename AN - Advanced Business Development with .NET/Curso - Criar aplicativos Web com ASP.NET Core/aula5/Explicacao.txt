@@ -1,0 +1,11 @@
+Resumo
+
+Neste módulo, você criou uma API Web do ASP.NET Core em execução no .NET. A API Web cria, lê, atualiza e exclui pizzas de um cache na memória.
+
+Você aprendeu que a criação de uma API Web com o ASP.NET Core implica:
+
+Criando um novo aplicativo usando o modelo de API Web do ASP.NET Core .
+Criando classes que herdam da ControllerBase classe e que contêm métodos que respondem a solicitações HTTP.
+Como esse padrão permite que você se concentre em uma única ação de controlador de cada vez, você pode criar APIs Web funcionais rapidamente com uma pequena prática.
+
+Neste módulo, você usou um cache na memória. Essa abordagem ajudou você a se concentrar no aprendizado de conceitos de API Web, mas tem algumas limitações óbvias para aplicativos do mundo real. Se o aplicativo for interrompido, todas as alterações serão perdidas!
