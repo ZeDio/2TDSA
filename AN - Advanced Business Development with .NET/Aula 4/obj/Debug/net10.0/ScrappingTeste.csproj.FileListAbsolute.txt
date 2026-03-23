@@ -1,0 +1,17 @@
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/ScrappingTeste/bin/Debug/net10.0/ScrappingTeste
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/ScrappingTeste/bin/Debug/net10.0/ScrappingTeste.deps.json
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/ScrappingTeste/bin/Debug/net10.0/ScrappingTeste.runtimeconfig.json
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/ScrappingTeste/bin/Debug/net10.0/ScrappingTeste.dll
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/ScrappingTeste/bin/Debug/net10.0/ScrappingTeste.pdb
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/ScrappingTeste/bin/Debug/net10.0/HtmlAgilityPack.dll
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/ScrappingTeste/obj/Debug/net10.0/ScrappingTeste.csproj.AssemblyReference.cache
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/ScrappingTeste/obj/Debug/net10.0/ScrappingTeste.GeneratedMSBuildEditorConfig.editorconfig
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/ScrappingTeste/obj/Debug/net10.0/ScrappingTeste.AssemblyInfoInputs.cache
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/ScrappingTeste/obj/Debug/net10.0/ScrappingTeste.AssemblyInfo.cs
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/ScrappingTeste/obj/Debug/net10.0/ScrappingTeste.csproj.CoreCompileInputs.cache
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/ScrappingTeste/obj/Debug/net10.0/Scrappin.F3D52DB3.Up2Date
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/ScrappingTeste/obj/Debug/net10.0/ScrappingTeste.dll
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/ScrappingTeste/obj/Debug/net10.0/refint/ScrappingTeste.dll
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/ScrappingTeste/obj/Debug/net10.0/ScrappingTeste.pdb
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/ScrappingTeste/obj/Debug/net10.0/ScrappingTeste.genruntimeconfig.cache
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/ScrappingTeste/obj/Debug/net10.0/ref/ScrappingTeste.dll

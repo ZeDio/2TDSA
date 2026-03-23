@@ -1,0 +1,14 @@
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/SintaxeBasica/bin/Debug/net10.0/SintaxeBasica
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/SintaxeBasica/bin/Debug/net10.0/SintaxeBasica.deps.json
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/SintaxeBasica/bin/Debug/net10.0/SintaxeBasica.runtimeconfig.json
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/SintaxeBasica/bin/Debug/net10.0/SintaxeBasica.dll
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/SintaxeBasica/bin/Debug/net10.0/SintaxeBasica.pdb
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/SintaxeBasica/obj/Debug/net10.0/SintaxeBasica.GeneratedMSBuildEditorConfig.editorconfig
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/SintaxeBasica/obj/Debug/net10.0/SintaxeBasica.AssemblyInfoInputs.cache
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/SintaxeBasica/obj/Debug/net10.0/SintaxeBasica.AssemblyInfo.cs
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/SintaxeBasica/obj/Debug/net10.0/SintaxeBasica.csproj.CoreCompileInputs.cache
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/SintaxeBasica/obj/Debug/net10.0/SintaxeBasica.dll
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/SintaxeBasica/obj/Debug/net10.0/refint/SintaxeBasica.dll
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/SintaxeBasica/obj/Debug/net10.0/SintaxeBasica.pdb
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/SintaxeBasica/obj/Debug/net10.0/SintaxeBasica.genruntimeconfig.cache
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/SintaxeBasica/obj/Debug/net10.0/ref/SintaxeBasica.dll

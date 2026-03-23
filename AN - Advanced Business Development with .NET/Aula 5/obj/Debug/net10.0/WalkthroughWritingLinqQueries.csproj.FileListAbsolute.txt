@@ -1,0 +1,14 @@
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/WalkthroughWritingLinqQueries/bin/Debug/net10.0/WalkthroughWritingLinqQueries
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/WalkthroughWritingLinqQueries/bin/Debug/net10.0/WalkthroughWritingLinqQueries.deps.json
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/WalkthroughWritingLinqQueries/bin/Debug/net10.0/WalkthroughWritingLinqQueries.runtimeconfig.json
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/WalkthroughWritingLinqQueries/bin/Debug/net10.0/WalkthroughWritingLinqQueries.dll
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/WalkthroughWritingLinqQueries/bin/Debug/net10.0/WalkthroughWritingLinqQueries.pdb
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/WalkthroughWritingLinqQueries/obj/Debug/net10.0/WalkthroughWritingLinqQueries.GeneratedMSBuildEditorConfig.editorconfig
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/WalkthroughWritingLinqQueries/obj/Debug/net10.0/WalkthroughWritingLinqQueries.AssemblyInfoInputs.cache
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/WalkthroughWritingLinqQueries/obj/Debug/net10.0/WalkthroughWritingLinqQueries.AssemblyInfo.cs
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/WalkthroughWritingLinqQueries/obj/Debug/net10.0/WalkthroughWritingLinqQueries.csproj.CoreCompileInputs.cache
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/WalkthroughWritingLinqQueries/obj/Debug/net10.0/WalkthroughWritingLinqQueries.dll
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/WalkthroughWritingLinqQueries/obj/Debug/net10.0/refint/WalkthroughWritingLinqQueries.dll
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/WalkthroughWritingLinqQueries/obj/Debug/net10.0/WalkthroughWritingLinqQueries.pdb
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/WalkthroughWritingLinqQueries/obj/Debug/net10.0/WalkthroughWritingLinqQueries.genruntimeconfig.cache
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/WalkthroughWritingLinqQueries/obj/Debug/net10.0/ref/WalkthroughWritingLinqQueries.dll

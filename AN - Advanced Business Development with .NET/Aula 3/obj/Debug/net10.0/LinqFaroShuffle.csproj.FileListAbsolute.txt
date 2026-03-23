@@ -1,0 +1,14 @@
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/LinqFaroShuffle/bin/Debug/net10.0/LinqFaroShuffle
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/LinqFaroShuffle/bin/Debug/net10.0/LinqFaroShuffle.deps.json
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/LinqFaroShuffle/bin/Debug/net10.0/LinqFaroShuffle.runtimeconfig.json
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/LinqFaroShuffle/bin/Debug/net10.0/LinqFaroShuffle.dll
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/LinqFaroShuffle/bin/Debug/net10.0/LinqFaroShuffle.pdb
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/LinqFaroShuffle/obj/Debug/net10.0/LinqFaroShuffle.GeneratedMSBuildEditorConfig.editorconfig
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/LinqFaroShuffle/obj/Debug/net10.0/LinqFaroShuffle.AssemblyInfoInputs.cache
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/LinqFaroShuffle/obj/Debug/net10.0/LinqFaroShuffle.AssemblyInfo.cs
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/LinqFaroShuffle/obj/Debug/net10.0/LinqFaroShuffle.csproj.CoreCompileInputs.cache
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/LinqFaroShuffle/obj/Debug/net10.0/LinqFaroShuffle.dll
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/LinqFaroShuffle/obj/Debug/net10.0/refint/LinqFaroShuffle.dll
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/LinqFaroShuffle/obj/Debug/net10.0/LinqFaroShuffle.pdb
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/LinqFaroShuffle/obj/Debug/net10.0/LinqFaroShuffle.genruntimeconfig.cache
+/Users/leonardo.romao/RiderProjects/2TDSA_2026/LinqFaroShuffle/obj/Debug/net10.0/ref/LinqFaroShuffle.dll
