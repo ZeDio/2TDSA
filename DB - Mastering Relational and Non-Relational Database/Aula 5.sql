@@ -34,12 +34,15 @@ begin
     insert into Boletim values (4, 'JV', 100, 7, 8, 3, null, 5, null);
     insert into Boletim values (5, 'IA', 100, 5, 8, 4, null, 5, null);
     insert into Boletim values (6, 'IA', 100, 6, 3, 4, null, 5, null);
+    insert into Boletim values (7, 'IA', 100, 2, 3, 4, null, 5, null);
+    insert into Boletim values (8, 'IA', 100, 2, 7, 4, null, 5, null);
+    insert into Boletim values (9, 'IA', 100, 2, 7, 4, null, 60, null);
 end;
 
 
 
 declare
-    v_cd_disciplina number(3) := &disciplina;
+    v_cd_disciplina number(5,2) := &disciplina;
     v_carga_hora  v_cd_disciplina%type;
     v_faltas v_cd_disciplina%type;
     v_cp_1 v_cd_disciplina%type;
@@ -47,6 +50,8 @@ declare
     v_cp_3 v_cd_disciplina%type;
     v_media v_cd_disciplina%type;
     v_situacao varchar(50);
+    
+    v_limite_faltas number(5);
 begin
     select carga_hora, cp_1, cp_2, cp_3, faltas 
     into v_carga_hora, v_cp_1, v_cp_2, v_cp_3, v_faltas
@@ -73,29 +78,30 @@ begin
     
     
     v_carga_hora := v_carga_hora/4;
+    v_limite_faltas := v_carga_hora * 0.25;
     
     
-    if (v_media >= 6 and v_carga_hora > v_faltas) then
+    IF v_media >= 6 AND v_faltas < v_limite_faltas THEN
         v_situacao := 'Aprovado';
         update Boletim set situacao = v_situacao where cd_disciplina = v_cd_disciplina;
         dbms_output.put_line('Sua situação :'|| v_situacao);
         
-    elsif (v_media <= 6 and v_carga_hora <= v_faltas) then
+    ELSIF v_media >= 6 AND v_faltas >= v_limite_faltas THEN
         v_situacao := 'Reprovado por faltas';
         update Boletim set situacao = v_situacao where cd_disciplina = v_cd_disciplina;
         dbms_output.put_line('Sua situação :'|| v_situacao);
         
-    elsif (v_media >= 4 and v_media < 6 or v_carga_hora > v_faltas) then
+    ELSIF v_media >= 4 AND v_media < 6 AND v_faltas < v_limite_faltas THEN
         v_situacao := 'Exame';
         update Boletim set situacao = v_situacao where cd_disciplina = v_cd_disciplina;
         dbms_output.put_line('Sua situação :'|| v_situacao);
         
-    elsif (v_media < 4 and v_carga_hora > v_faltas) then
+    ELSIF v_media < 4 AND v_faltas < v_limite_faltas THEN
         v_situacao := 'Reprovado por nota';
         update Boletim set situacao = v_situacao where cd_disciplina = v_cd_disciplina;
         dbms_output.put_line('Sua situação :'|| v_situacao);
         
-    elsif (v_media < 4 and v_carga_hora <= v_faltas) then
+    ELSIF v_media < 4 AND v_faltas >= v_limite_faltas THEN
         v_situacao := 'Reprovado por nota e faltas';
         update Boletim set situacao = v_situacao where cd_disciplina = v_cd_disciplina;
         dbms_output.put_line('Sua situação :'|| v_situacao);
