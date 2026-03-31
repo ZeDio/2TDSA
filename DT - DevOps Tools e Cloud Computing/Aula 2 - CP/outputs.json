@@ -1,0 +1,6 @@
+{
+  "resource_group": "rg-dimdim-java-prod",
+  "vm_name": "vm-dimdim",
+  "public_ip": "",
+  "app_port": 8080
+}

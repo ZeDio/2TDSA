@@ -1,0 +1,24 @@
+cat <<EOF > LojaWeb.java
+import com.sun.net.httpserver.HttpServer;
+import java.io.OutputStream;
+import java.net.InetSocketAddress;
+
+public class LojaWeb {
+    public static void main(String[] args) throws Exception {
+        HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
+        server.createContext("/", (exchange) -> {
+            String response = "<html><body style='font-family:sans-serif; text-align:center;'>" +
+                              "<h1>💰 LOJA DIMDIM ONLINE 💰</h1>" +
+                              "<p><b>Cafe Tech:</b> R$ 5,00</p>" +
+                              "<p><b>Script Azure:</b> R$ 10,00</p>" +
+                              "<hr><p style='color:green;'>Servidor Java rodando no Azure!</p>" +
+                              "</body></html>";
+            exchange.sendResponseHeaders(200, response.getBytes().length);
+            OutputStream os = exchange.getResponseBody();
+            os.write(response.getBytes());
+            os.close();
+        });
+        System.out.println("Servidor iniciado na porta 8080...");
+        server.start();
+    }
+}
