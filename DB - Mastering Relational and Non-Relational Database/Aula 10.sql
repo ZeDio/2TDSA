@@ -1,4 +1,4 @@
--- Aula 12 - 28/04/2026
+-- Aula 10 - 28/04/2026
 set serveroutput on
 set verify off
 
@@ -116,6 +116,15 @@ BEGIN
             WHERE CODIGO = v_produto.CODIGO;
         END IF;
     END LOOP;
+
     EXCEPTION
+		WHEN v_categoria_invalida THEN
+			DBMS_OUTPUT.PUT_LINE('Erro: categoria inválida encontrada.');
+
+		WHEN ZERO_DIVIDE THEN
+			DBMS_OUTPUT.PUT_LINE('Erro: divisão por zero.');
+
+		WHEN OTHERS THEN
+			DBMS_OUTPUT.PUT_LINE('Erro inesperado: ' || SQLERRM);
     
 END;
