@@ -1,0 +1,54 @@
+version: "3.9"
+
+services:
+  mysql:
+    image: zediodasilne/dimdin-mysql:latest
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dimdin
+      MYSQL_USER: dimdin_user
+      MYSQL_PASSWORD: dimdin_pass
+    ports:
+      - "3306:3306"
+    networks:
+      - dimdin-network
+
+  backend:
+    image: zediodasilne/dimdin-backend:latest
+    container_name: backend
+    restart: always
+    depends_on:
+      - mysql
+    ports:
+      - "3000:3000"
+    networks:
+      - dimdin-network
+
+  frontend:
+    image: zediodasilne/dimdin-frontend:latest
+    container_name: frontend
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "5173:80"
+    networks:
+      - dimdin-network
+
+  nginx:
+    image: zediodasilne/dimdin-nginx:latest
+    container_name: nginx
+    restart: always
+    depends_on:
+      - frontend
+      - backend
+    ports:
+      - "80:80"
+    networks:
+      - dimdin-network
+
+networks:
+  dimdin-network:
+    external: true
