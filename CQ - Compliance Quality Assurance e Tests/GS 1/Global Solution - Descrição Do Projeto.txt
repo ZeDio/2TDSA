@@ -1,0 +1,14 @@
+Descrição Do Projeto...
+
+
+O projeto consiste no desenvolvimento de um sistema inteligente de gerenciamento de hotéis espaciais voltados para futuras operações de colonização e turismo na Lua ou em Marte. A solução tem como objetivo monitorar, controlar e gerenciar recursos essenciais para a sobrevivência, segurança e conforto de hóspedes e astronautas em ambientes espaciais extremos. O sistema realizará o monitoramento de variáveis críticas do habitat, como temperatura, níveis de oxigênio, radiação, estoque de alimentos e presença de ocupantes. As informações serão coletadas por sensores simulados por meio de dispositivos ESP32 e enviadas para um backend desenvolvido em Java, responsável pelo processamento dos dados, geração de alertas automáticos e gerenciamento das operações do hotel espacial. Além do monitoramento ambiental, a plataforma contará com funcionalidades administrativas, incluindo reservas de quartos e módulos habitacionais, dashboards em tempo real, visualização gráfica dos sensores e controle de estoque. Os dados serão armazenados em banco de dados Oracle SQL, enquanto a aplicação mobile será desenvolvida com React Expo, permitindo acesso remoto às informações dos hóspedes, quartos e condições do habitat. O projeto também utilizará Docker para containerização dos serviços, garantindo padronização do ambiente, escalabilidade e facilidade de implantação da solução.
+O escopo inicial do MVP contempla autenticação de usuários, dashboard de monitoramento, comunicação com dispositivos ESP32 e armazenamento das informações dos sensores, com possibilidade de evolução futura para múltiplos habitats, monitoramento em tempo real e expansão das funcionalidades administrativas e operacionais.
+
+
+Integrantes do Grupo...
+
+RM 562341 - José Diogo - ZeDio 🔗 https://github.com/ZeDio
+RM 566515 - Arthur Dos Santos - Arth.pv 🔗 https://github.com/ArthurCPV
+RM 566357 - Mariana Xavier - Marixavq 🔗 https://github.com/Marixavq
+RM 564975 - Júlia Tiziotto - JúliaB 🔗 https://github.com/JuliaTButtler
+RM 564939 - Bruno Martins - Taikawaititi 🔗 https://github.com/Taikawaititi
