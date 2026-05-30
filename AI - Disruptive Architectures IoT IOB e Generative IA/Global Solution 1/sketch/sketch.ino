@@ -1,3 +1,6 @@
+// ======================================================
+// BIBLIOTECAS
+// ======================================================
 #include <WiFi.h>
 #include <WebServer.h>
 #include <HTTPClient.h>
@@ -6,440 +9,813 @@
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
-// ================= WIFI =================
+// ======================================================
+// WIFI
+// ======================================================
+const char* WIFI_SSID = "Wokwi-GUEST";
+const char* WIFI_PASSWORD = "";
 
-const char* ssid = "Wokwi-GUEST";
-const char* password = "";
-
-// ================= WEB SERVER =================
-
+// ======================================================
+// SERVIDOR WEB
+// ======================================================
 WebServer server(80);
 
-// ================= DHT22 =================
+// ======================================================
+// DHT22
+// ======================================================
+#define DHT_PIN     4
+#define DHT_TYPE    DHT22
+DHT dht(DHT_PIN, DHT_TYPE);
 
-#define DHTPIN 4
-#define DHTTYPE DHT22
-
-DHT dht(DHTPIN, DHTTYPE);
-
-// ================= MQ2 =================
-
+// ======================================================
+// MQ2
+// ======================================================
 #define MQ2_PIN 33
 
-// ================= LEDS =================
+// ======================================================
+// LEDS
+// ======================================================
+#define LED_VERDE      25
+#define LED_AMARELO    26
+#define LED_VERMELHO   27
 
-#define LED_VERDE 25
-#define LED_AMARELO 26
-#define LED_VERMELHO 27
+// ======================================================
+// BOTÕES
+// ======================================================
+#define BTN_SENSORES   15
+#define BTN_TERRA      17
+#define BTN_LUA        5
+#define BTN_MARTE      18
 
-// ================= LCD =================
-
+// ======================================================
+// LCD
+// ======================================================
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
-// ================= VARIÁVEIS HABITAT =================
+// ======================================================
+// ENUM TELAS
+// ======================================================
+enum TelaAtual
+{
+  TELA_HABITAT = 0,
+  TELA_TERRA,
+  TELA_LUA,
+  TELA_MARTE
+};
 
+int telaAtual = TELA_HABITAT;
+int ultimaTela = -1;
+
+// ======================================================
+// CONTROLE DE TEMPO
+// ======================================================
+// Debounce dos botões
+unsigned long ultimoClique = 0;
+const unsigned long DEBOUNCE = 250;
+
+// Atualização do LCD
+unsigned long ultimoUpdateLCD = 0;
+const unsigned long INTERVALO_LCD = 1000;
+
+// ======================================================
+// DADOS DO HABITAT
+// ======================================================
 float temperatura = 0;
 float umidade = 0;
 int gas = 0;
 
-String statusHabitat = "SEGURO";
+String statusHabitat = "SEGURO ";
 
-// ================= VARIÁVEIS MARTE =================
-
-float marsTemp = 0;
-float marsPressure = 0;
-float marsWind = 0;
-
-// ================= VARIÁVEIS TERRA =================
-
+// ======================================================
+// DADOS DA TERRA
+// ======================================================
 float earthTemp = 0;
 float earthHumidity = 0;
 float earthWind = 0;
 
-// ================= STATUS =================
+String statusTerra = "SEGURO ";
 
-void calcularStatus() {
+// ======================================================
+// DADOS DA LUA
+// ======================================================
+float moonTemp = -53;
+float moonRadiation = 8.7;
+float moonGravity = 1.62;
 
-  // APAGA TODOS OS LEDS
+String statusLua = "ATENCAO";
 
+// ======================================================
+// DADOS DE MARTE
+// ======================================================
+float marsTemp = 0;
+float marsPressure = 0;
+float marsWind = 0;
+
+String statusMarte = "SEGURO ";
+
+// ======================================================
+// PROTÓTIPOS DAS FUNÇÕES
+// ======================================================
+
+// ======================================================
+// Sensores
+// ======================================================
+void lerSensores();
+
+// ======================================================
+// APIs
+// ======================================================
+void buscarDadosTerra();
+void buscarDadosMarte();
+
+// ======================================================
+// Status
+// ======================================================
+void calcularStatusHabitat();
+void calcularStatusTerra();
+void calcularStatusLua();
+void calcularStatusMarte();
+
+// ======================================================
+// Interface
+// ======================================================
+void atualizarLeds(String statusAtual);
+void verificarBotoes();
+void atualizarLCD();
+
+// ======================================================
+// Wifi
+// ======================================================
+void conectarWiFi();
+
+// ======================================================
+// Dashboard
+// ======================================================
+void handleRoot();
+void handleStatus();
+void handleEarthStatus();
+void handleMarsStatus();
+
+// ======================================================
+// LEITURA DOS SENSORES
+// ======================================================
+void lerSensores(){
+  temperatura = dht.readTemperature();
+  umidade = dht.readHumidity();
+  gas = analogRead(MQ2_PIN);
+
+  // Evita valores inválidos do DHT
+  if (isnan(temperatura))
+  {
+    temperatura = 0;
+  }
+
+  if (isnan(umidade))
+  {
+    umidade = 0;
+  }
+}
+
+// ======================================================
+// DADOS DE MARTE (SIMULADOS)
+// ======================================================
+void buscarDadosMarte(){
+  marsTemp = random(-80, 5);
+  marsPressure = random(600, 900);
+  marsWind = random(1, 40);
+}
+
+// ======================================================
+// STATUS DO HABITAT
+// ======================================================
+void calcularStatusHabitat(){
+  if (gas > 3000 || temperatura > 40)
+  {
+    statusHabitat = "CRITICO";
+  }
+  else if (gas > 1500 || temperatura > 30)
+  {
+    statusHabitat = "ATENCAO";
+  }
+  else
+  {
+    statusHabitat = "SEGURO ";
+  }
+}
+
+// ======================================================
+// STATUS DA TERRA
+// ======================================================
+void calcularStatusTerra(){
+  if (earthTemp >= 35)
+  {
+    statusTerra = "CRITICO";
+  }
+  else if (earthTemp >= 28)
+  {
+    statusTerra = "ATENCAO";
+  }
+  else
+  {
+    statusTerra = "SEGURO ";
+  }
+}
+
+// ======================================================
+// STATUS DA LUA
+// ======================================================
+void calcularStatusLua(){
+  if (moonRadiation >= 9)
+  {
+    statusLua = "CRITICO";
+  }
+  else if (moonRadiation >= 6)
+  {
+    statusLua = "ATENCAO";
+  }
+  else
+  {
+    statusLua = "SEGURO ";
+  }
+}
+
+// ======================================================
+// STATUS DE MARTE
+// ======================================================
+void calcularStatusMarte(){
+  if (marsWind >= 30)
+  {
+    statusMarte = "CRITICO";
+  }
+  else if (marsWind >= 15)
+  {
+    statusMarte = "ATENCAO";
+  }
+  else
+  {
+    statusMarte = "SEGURO ";
+  }
+}
+
+// ======================================================
+// CALCULA TODOS OS STATUS
+// ======================================================
+void calcularTodosStatus(){
+  calcularStatusHabitat();
+  calcularStatusTerra();
+  calcularStatusLua();
+  calcularStatusMarte();
+}
+
+// ======================================================
+// CONTROLE DOS LEDS
+// ======================================================
+void atualizarLeds(String statusAtual){
   digitalWrite(LED_VERDE, LOW);
   digitalWrite(LED_AMARELO, LOW);
   digitalWrite(LED_VERMELHO, LOW);
 
-  // DEFINE STATUS
-
-  if (gas > 3000 || temperatura > 40) {
-
-    statusHabitat = "CRITICO";
-
-    digitalWrite(LED_VERMELHO, HIGH);
-  }
-
-  else if (gas > 1500 || temperatura > 30) {
-
-    statusHabitat = "ATENCAO";
-
-    digitalWrite(LED_AMARELO, HIGH);
-  }
-
-  else {
-
-    statusHabitat = "SEGURO";
-
+  if (statusAtual == "SEGURO ")
+  {
     digitalWrite(LED_VERDE, HIGH);
   }
+  if (statusAtual == "ATENCAO")
+  {
+    digitalWrite(LED_AMARELO, HIGH);
+  }
+  if (statusAtual == "CRITICO")
+  {
+    digitalWrite(LED_VERMELHO, HIGH);
+  }
 }
 
-// ================= BUSCAR DADOS MARTE =================
-
-void buscarDadosMarte() {
-
-  HTTPClient http;
-
-  String url =
-  "https://api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype=json&ver=1.0";
-
-  http.begin(url);
-
-  int httpCode = http.GET();
-
-  if (httpCode > 0) {
-
-    String payload = http.getString();
-
-    DynamicJsonDocument doc(50000);
-
-    DeserializationError error = deserializeJson(doc, payload);
-
-    if (!error) {
-
-      JsonArray sol_keys = doc["sol_keys"];
-
-      if (sol_keys.size() > 0) {
-
-        String ultimoSol = sol_keys[sol_keys.size() - 1];
-
-        marsTemp =
-        doc[ultimoSol]["AT"]["av"] | 0;
-
-        marsPressure =
-        doc[ultimoSol]["PRE"]["av"] | 0;
-
-        marsWind =
-        doc[ultimoSol]["HWS"]["av"] | 0;
-      }
-    }
+// ======================================================
+// LEITURA DOS BOTÕES COM UM TEMPO EM MILLIS
+// ======================================================
+void verificarBotoes(){
+  if (millis() - ultimoClique < DEBOUNCE)
+  {
+    return;
   }
 
-  http.end();
+  if (digitalRead(BTN_SENSORES) == LOW)
+  {
+    telaAtual = TELA_HABITAT;
+    ultimoClique = millis();
+  }
+  else if (digitalRead(BTN_TERRA) == LOW)
+  {
+    buscarDadosTerra();
+    telaAtual = TELA_TERRA;
+    ultimoClique = millis();
+  }
+  else if (digitalRead(BTN_LUA) == LOW)
+  {
+    telaAtual = TELA_LUA;
+    ultimoClique = millis();
+  }
+  else if (digitalRead(BTN_MARTE) == LOW)
+  {
+    buscarDadosMarte();
+    telaAtual = TELA_MARTE;
+    ultimoClique = millis();
+  }
 }
 
-// ================= BUSCAR DADOS TERRA =================
-
-void buscarDadosTerra() {
+// ======================================================
+// BUSCA DE DADOS DA TERRA (API OPEN-METEO)
+//
+// Pega:
+// - Temperatura
+// - Umidade
+// - Velocidade do vento
+// ======================================================
+void buscarDadosTerra(){
+  if (WiFi.status() != WL_CONNECTED)
+  {
+    Serial.println("WiFi desconectado.");
+    return;
+  }
 
   HTTPClient http;
 
   String url =
-  "https://api.open-meteo.com/v1/forecast?latitude=-23.55&longitude=-46.63&current=temperature_2m,relative_humidity_2m,wind_speed_10m";
+    "https://api.open-meteo.com/v1/forecast?latitude=-23.55&longitude=-46.63&current=temperature_2m,relative_humidity_2m,wind_speed_10m";
 
   http.begin(url);
 
   int httpCode = http.GET();
 
-  if (httpCode > 0) {
-
+  if (httpCode > 0)
+  {
     String payload = http.getString();
 
-    DynamicJsonDocument doc(10000);
+    DynamicJsonDocument doc(8192);
 
     DeserializationError error =
-    deserializeJson(doc, payload);
+      deserializeJson(doc, payload);
 
-    if (!error) {
-
+    if (!error)
+    {
       earthTemp =
-      doc["current"]["temperature_2m"] | 0;
+        doc["current"]["temperature_2m"] | 0;
 
       earthHumidity =
-      doc["current"]["relative_humidity_2m"] | 0;
+        doc["current"]["relative_humidity_2m"] | 0;
 
       earthWind =
-      doc["current"]["wind_speed_10m"] | 0;
+        doc["current"]["wind_speed_10m"] | 0;
+
+      Serial.println("Dados Terra atualizados.");
     }
+    else
+    {
+      Serial.println("Erro ao ler JSON.");
+    }
+  }
+  else
+  {
+    Serial.print("Erro HTTP: ");
+    Serial.println(httpCode);
   }
 
   http.end();
 }
 
-// ================= DASHBOARD HTML =================
-
-void handleRoot() {
-
-  String html = R"rawliteral(
-  <!DOCTYPE html>
-  <html>
-
-  <head>
-
-    <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="3">
-
-    <title>Habitat Dashboard</title>
-
-    <style>
-
-      body{
-        background:#0f172a;
-        color:white;
-        font-family:Arial;
-        text-align:center;
-        padding:20px;
-      }
-
-      .card{
-        background:#1e293b;
-        padding:20px;
-        margin:20px auto;
-        border-radius:12px;
-        width:320px;
-      }
-
-      h1{
-        color:#38bdf8;
-      }
-
-      .safe{
-        color:#22c55e;
-      }
-
-      .warn{
-        color:#facc15;
-      }
-
-      .danger{
-        color:#ef4444;
-      }
-
-    </style>
-
-  </head>
-
-  <body>
-
-    <h1>Habitat Espacial</h1>
-
-    <div class="card">
-      <h2>Habitat</h2>
-      <p>Temperatura: )rawliteral";
-
-  html += temperatura;
-
-  html += R"rawliteral( °C</p>
-      <p>Umidade: )rawliteral";
-
-  html += umidade;
-
-  html += R"rawliteral( %</p>
-      <p>Gas: )rawliteral";
-
-  html += gas;
-
-  html += R"rawliteral(</p>
-      <p>Status: )rawliteral";
-
-  html += statusHabitat;
-
-  html += R"rawliteral(</p>
-    </div>
-
-    <div class="card">
-      <h2>Marte</h2>
-      <p>Temperatura: )rawliteral";
-
-  html += marsTemp;
-
-  html += R"rawliteral( °C</p>
-      <p>Pressao: )rawliteral";
-
-  html += marsPressure;
-
-  html += R"rawliteral(</p>
-      <p>Vento: )rawliteral";
-
-  html += marsWind;
-
-  html += R"rawliteral( km/h</p>
-    </div>
-
-    <div class="card">
-      <h2>Terra</h2>
-      <p>Temperatura: )rawliteral";
-
-  html += earthTemp;
-
-  html += R"rawliteral( °C</p>
-      <p>Umidade: )rawliteral";
-
-  html += earthHumidity;
-
-  html += R"rawliteral( %</p>
-      <p>Vento: )rawliteral";
-
-  html += earthWind;
-
-  html += R"rawliteral( km/h</p>
-    </div>
-
-  </body>
-  </html>
-  )rawliteral";
-
-  server.send(200, "text/html", html);
-}
-
-// ================= JSON HABITAT =================
-
-void handleStatus() {
-
-  String json = "{";
-
-  json += "\"temperatura\": " + String(temperatura) + ",";
-  json += "\"umidade\": " + String(umidade) + ",";
-  json += "\"gas\": " + String(gas) + ",";
-  json += "\"status\": \"" + statusHabitat + "\"";
-
-  json += "}";
-
-  server.send(200, "application/json", json);
-}
-
-// ================= JSON MARTE =================
-
-void handleMarsStatus() {
-
-  buscarDadosMarte();
-
-  String json = "{";
-
-  json += "\"temperatura_marte\": " + String(marsTemp) + ",";
-  json += "\"pressao_marte\": " + String(marsPressure) + ",";
-  json += "\"vento_marte\": " + String(marsWind);
-
-  json += "}";
-
-  server.send(200, "application/json", json);
-}
-
-// ================= JSON TERRA =================
-
-void handleEarthStatus() {
-
-  buscarDadosTerra();
-
-  String json = "{";
-
-  json += "\"temperatura_terra\": " + String(earthTemp) + ",";
-  json += "\"umidade_terra\": " + String(earthHumidity) + ",";
-  json += "\"vento_terra\": " + String(earthWind);
-
-  json += "}";
-
-  server.send(200, "application/json", json);
-}
-
-// ================= SETUP =================
-
-void setup() {
-
-  Serial.begin(115200);
-
-  // DHT
-
-  dht.begin();
-
-  // LCD
-
-  lcd.init();
-  lcd.backlight();
-
-  // LEDS
-
-  pinMode(LED_VERDE, OUTPUT);
-  pinMode(LED_AMARELO, OUTPUT);
-  pinMode(LED_VERMELHO, OUTPUT);
-
-  // WIFI
-
-  lcd.setCursor(0,0);
+// ======================================================
+// CONEXÃO WIFI
+// ======================================================
+void conectarWiFi(){
+  lcd.clear();
+  lcd.setCursor(0, 0);
   lcd.print("Conectando...");
 
-  WiFi.begin(ssid, password);
+  Serial.println("Conectando WiFi...");
 
-  while (WiFi.status() != WL_CONNECTED) {
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 
+  while (WiFi.status() != WL_CONNECTED)
+  {
     delay(500);
     Serial.print(".");
   }
 
-  Serial.println("");
-  Serial.println("WiFi conectado!");
+  Serial.println();
+  Serial.println("WiFi conectado.");
 
   Serial.print("IP: ");
   Serial.println(WiFi.localIP());
 
   lcd.clear();
-  lcd.setCursor(0,0);
-  lcd.print("WiFi conectado");
 
-  // BUSCA DADOS EXTERNOS
+  lcd.setCursor(0, 0);
+  lcd.print("WiFi Conectado");
+  lcd.setCursor(0, 1);
+  lcd.print("IP: ");
+  lcd.print(WiFi.localIP());
 
-  buscarDadosMarte();
-  buscarDadosTerra();
-
-  // ROTAS
-
-  server.on("/", handleRoot);
-
-  server.on("/status", HTTP_GET, handleStatus);
-
-  server.on("/status-marte", HTTP_GET, handleMarsStatus);
-
-  server.on("/status-terra", HTTP_GET, handleEarthStatus);
-
-  server.begin();
-
-  Serial.println("Servidor iniciado!");
+  delay(2000);
 }
 
-// ================= LOOP =================
+// ======================================================
+// TELA HABITAT
+// ======================================================
+void mostrarTelaHabitat(){
+  atualizarLeds(statusHabitat);
 
-void loop() {
+  lcd.setCursor(0, 0);
+  lcd.print("Habitat- ");
+  lcd.print(statusHabitat);
+  lcd.setCursor(0, 1);
+  lcd.print("Temp: ");
+  lcd.print((int)temperatura);
+  lcd.print("C");
+}
 
-  // LEITURAS
+// ======================================================
+// TELA TERRA
+// ======================================================
+void mostrarTelaTerra(){
+  atualizarLeds(statusTerra);
 
-  temperatura = dht.readTemperature();
-  umidade = dht.readHumidity();
+  lcd.setCursor(0, 0);
+  lcd.print("Terra- ");
+  lcd.print(statusTerra);
+  lcd.setCursor(0, 1);
+  lcd.print("Temp: ");
+  lcd.print((int)earthTemp);
+  lcd.print("C");
+}
 
-  gas = analogRead(MQ2_PIN);
+// ======================================================
+// TELA LUA
+// ======================================================
+void mostrarTelaLua(){
+  atualizarLeds(statusLua);
 
-  // STATUS
+  lcd.setCursor(0, 0);
+  lcd.print("Lua- ");
+  lcd.print(statusLua);
+  lcd.setCursor(0, 1);
+  lcd.print("Temp: ");
+  lcd.print((int)moonTemp);
+  lcd.print("C");
+}
 
-  calcularStatus();
+// ======================================================
+// TELA MARTE
+// ======================================================
+void mostrarTelaMarte(){
+  atualizarLeds(statusMarte);
 
-  // LCD
+  lcd.setCursor(0, 0);
+  lcd.print("Marte- ");
+  lcd.print(statusMarte);
+  lcd.setCursor(0, 1);
+  lcd.print("Temp: ");
+  lcd.print((int)marsTemp);
+  lcd.print("C");
+}
+
+// ======================================================
+// LCD
+// ======================================================
+void atualizarLCD(){
+  if (millis() - ultimoUpdateLCD < INTERVALO_LCD)
+  {
+    return;
+  }
+
+  ultimoUpdateLCD = millis();
+
+  if (telaAtual != ultimaTela)
+  {
+    lcd.clear();
+    ultimaTela = telaAtual;
+  }
+
+  switch (telaAtual)
+  {
+    case TELA_HABITAT:
+      mostrarTelaHabitat();
+      break;
+
+    case TELA_TERRA:
+      mostrarTelaTerra();
+      break;
+
+    case TELA_LUA:
+      mostrarTelaLua();
+      break;
+
+    case TELA_MARTE:
+      mostrarTelaMarte();
+      break;
+  }
+}
+
+// ======================================================
+// DASHBOARD WEB
+// ======================================================
+void handleRoot(){
+  String html = R"rawliteral(
+
+  <!DOCTYPE html>
+  <html>
+
+  <head>
+
+  <meta charset="UTF-8">
+
+  <meta http-equiv="refresh" content="5">
+
+  <title>Habitat Espacial</title>
+
+  <style>
+
+  body{
+    background:#0f172a;
+    color:white;
+    font-family:Arial;
+    text-align:center;
+    padding:20px;
+  }
+
+  .card{
+    background:#1e293b;
+    width:320px;
+    margin:auto;
+    margin-bottom:20px;
+    padding:20px;
+    border-radius:12px;
+  }
+
+  h1{
+    color:#38bdf8;
+  }
+
+  </style>
+
+  </head>
+
+  <body>
+
+  <h1>Habitat Espacial</h1>
+
+  <div class="card">
+  <h2>Habitat</h2>
+  <p>Status: )rawliteral";
+
+    html += statusHabitat;
+
+    html += R"rawliteral(</p>
+  <p>Temperatura: )rawliteral";
+
+    html += String(temperatura, 1);
+
+    html += R"rawliteral( °C</p>
+  <p>Umidade: )rawliteral";
+
+    html += String(umidade, 1);
+
+    html += R"rawliteral( %</p>
+  </div>
+
+  <div class="card">
+  <h2>Terra</h2>
+  <p>Status: )rawliteral";
+
+    html += statusTerra;
+
+    html += R"rawliteral(</p>
+  <p>Temperatura: )rawliteral";
+
+    html += String(earthTemp, 1);
+
+    html += R"rawliteral( °C</p>
+  <p>Umidade: )rawliteral";
+
+    html += String(earthHumidity, 1);
+
+    html += R"rawliteral( %</p>
+  <p>Vento: )rawliteral";
+
+    html += String(earthWind, 1);
+
+    html += R"rawliteral( km/h</p>
+  </div>
+
+  <div class="card">
+  <h2>Lua</h2>
+  <p>Status: )rawliteral";
+
+    html += statusLua;
+
+    html += R"rawliteral(</p>
+  <p>Radiacao: )rawliteral";
+
+    html += String(moonRadiation, 1);
+
+    html += R"rawliteral(</p>
+  </div>
+
+  <div class="card">
+  <h2>Marte</h2>
+  <p>Status: )rawliteral";
+
+    html += statusMarte;
+
+    html += R"rawliteral(</p>
+  <p>Temperatura: )rawliteral";
+
+    html += String(marsTemp, 1);
+
+    html += R"rawliteral( °C</p>
+  <p>Pressao: )rawliteral";
+
+    html += String(marsPressure, 1);
+
+    html += R"rawliteral( Pa</p>
+  <p>Vento: )rawliteral";
+
+    html += String(marsWind, 1);
+
+    html += R"rawliteral( km/h</p>
+  </div>
+
+  </body>
+  </html>
+
+  )rawliteral";
+
+    server.send(200, "text/html", html);
+}
+
+// ======================================================
+// JSON HABITAT
+// ======================================================
+void handleStatus(){
+  DynamicJsonDocument doc(512);
+
+  doc["temperatura"] = temperatura;
+  doc["umidade"] = umidade;
+  doc["gas"] = gas;
+  doc["status"] = statusHabitat;
+
+  String json;
+
+  serializeJson(doc, json);
+
+  server.send(200, "application/json", json);
+}
+
+// ======================================================
+// JSON TERRA
+// ======================================================
+void handleEarthStatus(){
+  DynamicJsonDocument doc(512);
+
+  doc["temperatura"] = earthTemp;
+  doc["umidade"] = earthHumidity;
+  doc["vento"] = earthWind;
+  doc["status"] = statusTerra;
+
+  String json;
+
+  serializeJson(doc, json);
+
+  server.send(200, "application/json", json);
+}
+
+// ======================================================
+// JSON MARTE
+// ======================================================
+void handleMarsStatus(){
+  DynamicJsonDocument doc(512);
+
+  doc["temperatura"] = marsTemp;
+  doc["pressao"] = marsPressure;
+  doc["vento"] = marsWind;
+  doc["status"] = statusMarte;
+
+  String json;
+
+  serializeJson(doc, json);
+
+  server.send(200, "application/json", json);
+}
+
+// ======================================================
+// CONFIGURAÇÃO DOS PINOS
+// ======================================================
+void configurarPinos(){
+  pinMode(LED_VERDE, OUTPUT);
+  pinMode(LED_AMARELO, OUTPUT);
+  pinMode(LED_VERMELHO, OUTPUT);
+
+  pinMode(BTN_SENSORES, INPUT_PULLUP);
+  pinMode(BTN_TERRA, INPUT_PULLUP);
+  pinMode(BTN_LUA, INPUT_PULLUP);
+  pinMode(BTN_MARTE, INPUT_PULLUP);
+}
+
+// ======================================================
+// CONFIGURAÇÃO DO LCD
+// ======================================================
+void configurarLCD(){
+  lcd.init();
+  lcd.backlight();
 
   lcd.clear();
 
-  lcd.setCursor(0,0);
-  lcd.print("Temp:");
-  lcd.print(temperatura);
+  lcd.setCursor(0, 0);
+  lcd.print("HELIOS IOT");
+  lcd.setCursor(0, 1);
+  lcd.print("Inicializando");
 
-  lcd.setCursor(0,1);
-  lcd.print(statusHabitat);
+  delay(1500);
+}
+
+// ======================================================
+// CONFIGURAÇÃO DO SERVIDOR WEB
+// ======================================================
+void configurarServidor(){
+  server.on("/", HTTP_GET, handleRoot);
+  server.on("/status-sensores", HTTP_GET, handleStatus);
+  server.on("/status-terra", HTTP_GET, handleEarthStatus);
+  server.on("/status-marte", HTTP_GET, handleMarsStatus);
+
+  server.begin();
+  Serial.println("Servidor Web iniciado.");
+}
+
+// ======================================================
+// DADOS INICIAIS
+// ======================================================
+void carregarDadosIniciais(){
+  buscarDadosMarte();
+  buscarDadosTerra();
+  calcularTodosStatus();
+}
+
+// ======================================================
+// SETUP
+// ======================================================
+void setup(){
+  Serial.begin(115200);
+
+  randomSeed(millis());
+
+  Serial.println();
+  Serial.println("============");
+  Serial.println(" HELIOS IOT");
+  Serial.println("============");
+
+  // Inicializa sensores
+  dht.begin();
+
+  // LCD
+  configurarLCD();
+
+  // LEDs e botões
+  configurarPinos();
+
+  // WiFi
+  conectarWiFi();
+
+  // Dados iniciais
+  carregarDadosIniciais();
+
+  // Servidor Web
+  configurarServidor();
+
+  lcd.clear();
+
+  lcd.setCursor(0, 0);
+  lcd.print("Sistema OK");
+  lcd.setCursor(0, 1);
+  lcd.print("Pronto");
+
+  Serial.println("Sistema iniciado com sucesso.");
+}
+
+// ======================================================
+// LOOP PRINCIPAL
+// ======================================================
+void loop(){
+  // LEITURA DOS SENSORES
+  lerSensores();
+
+  // CÁLCULO DOS STATUS
+  calcularTodosStatus();
+
+  // LEITURA DOS BOTÕES
+  verificarBotoes();
+
+  // LCD
+  atualizarLCD();
 
   // WEB SERVER
-
   server.handleClient();
 
   delay(1000);
