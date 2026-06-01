@@ -52,7 +52,7 @@ O sistema utiliza um **ESP32** como controlador principal, responsável pela lei
 
 Assista à demonstração completa do projeto no YouTube:
 
-🔗 EM BREVE
+🔗 https://youtu.be/qVPOrmbRgM4
 
 ---
 
