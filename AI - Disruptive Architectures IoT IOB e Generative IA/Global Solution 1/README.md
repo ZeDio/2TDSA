@@ -247,6 +247,25 @@ Exemplo:
 
 ---
 
+## Status da Lua
+
+```http
+/status-lua
+```
+
+Exemplo:
+
+```json
+{
+  "temperatura": -53,
+  "radiação": 8.7,
+  "gravidade": 1.62,
+  "status": "ATENÇÃO"
+}
+```
+
+---
+
 ## Status de Marte
 
 ```http
@@ -317,7 +336,7 @@ Funcionalidades simuladas:
 
 # 💻 Repositório GitHub
 
-🔗 https://github.com/ZeDio/2TDSA/tree/main/AI%20-%20Disruptive%20Architectures%20IoT%20IOB%20e%20Generative%20IA/Global%20Solution%201
+🔗 https://github.com/ZeDio/Global_Solution_IOT
 
 ---
 
