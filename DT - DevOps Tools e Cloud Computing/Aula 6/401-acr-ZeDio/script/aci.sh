@@ -1,0 +1,1 @@
+az container create --resource-group rg-rm562341-acr --name guacamole-api --image 2tdsarm562341.azurecr.io/guacamole:v3 --cpu 1 --memory 2 --ports 8080 --registry-username 2tdsarm562341 --os-type Linux

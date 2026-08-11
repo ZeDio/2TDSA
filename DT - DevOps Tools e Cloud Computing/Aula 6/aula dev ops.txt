@@ -1,0 +1,47 @@
+Verificar se tem grupo -
+az acr list
+ou - 
+az acr list -o table
+
+Apagar o grupo -
+az group delete -name NOMEDOGRUPO -y -no-wait
+
+Criar Repositorio ACR na Azure -
+az group create --name rg-rm562341-acr --location eastus
+
+Criar um Registri-
+az acr create --resource-group rg-rm562341-acr --name 2tdsarm562341 --sku Basic --location eastus --public-network-enabled true --admin-enabled true
+
+Comando para habilitar recursos de sla oque se não pegar o de cima
+# az provider register --namespace Microsoft.ContainerRegistry
+
+No terminal do pc para da build na imagem 
+Comando para fazer o build da imagem-
+docker build -t 2tdsarm562341.azurecr.io/guacamole:v3 .
+
+Para logar na Azure pelo terminal para ter acesso -
+docker login 2tdsarm562341.azurecr.io --username 2tdsarm562341
+CuIvldCzbgpcjYqWt3FBR5EkZ1iNYeLa7dzXrxJ3QIb25sFnsDabJQQJ99CHACYeBjFEqg7NAAACAZCRBQWK
+
+Agora para enviar a img para azure -
+docker push 2tdsarm562341.azurecr.io/guacamole:v3
+
+Para rodar local- 
+docker run --rm -p 8080:8080 2tdsarm562341.azurecr.io/guacamole:v3
+
+Para ver as img no pc -
+docker image ls
+
+Para excluir -
+docker rmi 2tdsarm562341.azurecr.io/guacamole:v3 
+
+
+Agora para rodar na AZ -
+az container create --resource-group rg-rm562341-acr --name guacamole-api --image 2tdsarm562341.azurecr.io/guacamole:v3 --cpu 1 --memory 2 --ports 8080 --registry-username 2tdsarm562341 --os-type Linux --ip-address Public
+CuIvldCzbgpcjYqWt3FBR5EkZ1iNYeLa7dzXrxJ3QIb25sFnsDabJQQJ99CHACYeBjFEqg7NAAACAZCRBQWK
+
+Para exibir os container -
+az container list -o table
+
+Para excluir - 
+az container delete -n guacamole-api -g rg-rm562341-acr -y
