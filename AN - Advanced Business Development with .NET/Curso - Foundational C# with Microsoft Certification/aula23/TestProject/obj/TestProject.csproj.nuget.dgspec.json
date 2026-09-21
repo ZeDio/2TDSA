@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\josed\\OneDrive\\Área de Trabalho\\2TDSA\\AN - Advanced Business Development with .NET\\Curso C#\\aula23\\TestProject\\TestProject.csproj": {}
+    "C:\\Users\\josed\\OneDrive\\Área de Trabalho\\2TDSA\\AN - Advanced Business Development with .NET\\Curso - Foundational C# with Microsoft Certification\\aula23\\TestProject\\TestProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\josed\\OneDrive\\Área de Trabalho\\2TDSA\\AN - Advanced Business Development with .NET\\Curso C#\\aula23\\TestProject\\TestProject.csproj": {
+    "C:\\Users\\josed\\OneDrive\\Área de Trabalho\\2TDSA\\AN - Advanced Business Development with .NET\\Curso - Foundational C# with Microsoft Certification\\aula23\\TestProject\\TestProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\josed\\OneDrive\\Área de Trabalho\\2TDSA\\AN - Advanced Business Development with .NET\\Curso C#\\aula23\\TestProject\\TestProject.csproj",
+        "projectUniqueName": "C:\\Users\\josed\\OneDrive\\Área de Trabalho\\2TDSA\\AN - Advanced Business Development with .NET\\Curso - Foundational C# with Microsoft Certification\\aula23\\TestProject\\TestProject.csproj",
         "projectName": "TestProject",
-        "projectPath": "C:\\Users\\josed\\OneDrive\\Área de Trabalho\\2TDSA\\AN - Advanced Business Development with .NET\\Curso C#\\aula23\\TestProject\\TestProject.csproj",
+        "projectPath": "C:\\Users\\josed\\OneDrive\\Área de Trabalho\\2TDSA\\AN - Advanced Business Development with .NET\\Curso - Foundational C# with Microsoft Certification\\aula23\\TestProject\\TestProject.csproj",
         "packagesPath": "C:\\Users\\josed\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\josed\\OneDrive\\Área de Trabalho\\2TDSA\\AN - Advanced Business Development with .NET\\Curso C#\\aula23\\TestProject\\obj\\",
+        "outputPath": "C:\\Users\\josed\\OneDrive\\Área de Trabalho\\2TDSA\\AN - Advanced Business Development with .NET\\Curso - Foundational C# with Microsoft Certification\\aula23\\TestProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\josed\\AppData\\Roaming\\NuGet\\NuGet.Config"

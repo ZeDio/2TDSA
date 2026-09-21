@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "aHC494cNZHs=",
+  "dgSpecHash": "XmUxil9fAIs=",
   "success": true,
-  "projectFilePath": "/Users/leonardo.romao/RiderProjects/2TDSA_2026/ScrappingTeste/ScrappingTeste.csproj",
+  "projectFilePath": "C:\\Users\\josed\\OneDrive\\Área de Trabalho\\2TDSA\\AN - Advanced Business Development with .NET\\Aula 4\\ScrappingTeste.csproj",
   "expectedPackageFiles": [
-    "/Users/leonardo.romao/.nuget/packages/htmlagilitypack/1.12.4/htmlagilitypack.1.12.4.nupkg.sha512"
+    "C:\\Users\\josed\\.nuget\\packages\\htmlagilitypack\\1.12.4\\htmlagilitypack.1.12.4.nupkg.sha512"
   ],
   "logs": []
 }

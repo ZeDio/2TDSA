@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "CbBUhsX8HV0=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\josed\\OneDrive\\Área de Trabalho\\2TDSA\\AN - Advanced Business Development with .NET\\Curso - Foundational C# with Microsoft Certification\\aula32\\Challenge-project-Create-methods-in-CSharp-main\\Final\\Final.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\josed\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.36\\microsoft.netcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\josed\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.36\\microsoft.windowsdesktop.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\josed\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.36\\microsoft.aspnetcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\josed\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.36\\microsoft.netcore.app.host.win-x64.6.0.36.nupkg.sha512"
+  ],
+  "logs": []
+}

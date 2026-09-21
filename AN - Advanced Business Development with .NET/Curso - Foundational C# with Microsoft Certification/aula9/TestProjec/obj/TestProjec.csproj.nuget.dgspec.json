@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\josed\\OneDrive\\Área de Trabalho\\2TDSA\\AN - Advanced Business Development with .NET\\Curso C#\\aula9\\TestProjec\\TestProjec.csproj": {}
+    "C:\\Users\\josed\\OneDrive\\Área de Trabalho\\2TDSA\\AN - Advanced Business Development with .NET\\Curso - Foundational C# with Microsoft Certification\\aula9\\TestProjec\\TestProjec.csproj": {}
   },
   "projects": {
-    "C:\\Users\\josed\\OneDrive\\Área de Trabalho\\2TDSA\\AN - Advanced Business Development with .NET\\Curso C#\\aula9\\TestProjec\\TestProjec.csproj": {
+    "C:\\Users\\josed\\OneDrive\\Área de Trabalho\\2TDSA\\AN - Advanced Business Development with .NET\\Curso - Foundational C# with Microsoft Certification\\aula9\\TestProjec\\TestProjec.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\josed\\OneDrive\\Área de Trabalho\\2TDSA\\AN - Advanced Business Development with .NET\\Curso C#\\aula9\\TestProjec\\TestProjec.csproj",
+        "projectUniqueName": "C:\\Users\\josed\\OneDrive\\Área de Trabalho\\2TDSA\\AN - Advanced Business Development with .NET\\Curso - Foundational C# with Microsoft Certification\\aula9\\TestProjec\\TestProjec.csproj",
         "projectName": "TestProjec",
-        "projectPath": "C:\\Users\\josed\\OneDrive\\Área de Trabalho\\2TDSA\\AN - Advanced Business Development with .NET\\Curso C#\\aula9\\TestProjec\\TestProjec.csproj",
+        "projectPath": "C:\\Users\\josed\\OneDrive\\Área de Trabalho\\2TDSA\\AN - Advanced Business Development with .NET\\Curso - Foundational C# with Microsoft Certification\\aula9\\TestProjec\\TestProjec.csproj",
         "packagesPath": "C:\\Users\\josed\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\josed\\OneDrive\\Área de Trabalho\\2TDSA\\AN - Advanced Business Development with .NET\\Curso C#\\aula9\\TestProjec\\obj\\",
+        "outputPath": "C:\\Users\\josed\\OneDrive\\Área de Trabalho\\2TDSA\\AN - Advanced Business Development with .NET\\Curso - Foundational C# with Microsoft Certification\\aula9\\TestProjec\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\josed\\AppData\\Roaming\\NuGet\\NuGet.Config"

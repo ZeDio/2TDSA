@@ -1,0 +1,32 @@
+Summary
+  Generated on: 21/09/2026 - 11:10:24
+  Coverage date: 21/09/2026 - 11:05:19
+  Parser: Cobertura
+  Assemblies: 2
+  Classes: 8
+  Files: 6
+  Line coverage: 100%
+  Covered lines: 131
+  Uncovered lines: 0
+  Coverable lines: 131
+  Total lines: 225
+  Branch coverage: 100% (42 of 42)
+  Covered branches: 42
+  Total branches: 42
+  Method coverage: 100% (22 of 22)
+  Full method coverage: 100% (22 of 22)
+  Covered methods: 22
+  Fully covered methods: 22
+  Total methods: 22
+
+Triangulos.Api                                  100%
+  LadosRequest                                  100%
+  Program                                       100%
+
+Triangulos.Core                                 100%
+  Triangulos.Core.AnalisadorTriangulo           100%
+  Triangulos.Core.AnaliseTriangulo              100%
+  Triangulos.Core.Angulos                       100%
+  Triangulos.Core.CalculadoraTriangulo          100%
+  Triangulos.Core.ClassificadorTriangulo        100%
+  Triangulos.Core.TrianguloInvalidoException    100%
