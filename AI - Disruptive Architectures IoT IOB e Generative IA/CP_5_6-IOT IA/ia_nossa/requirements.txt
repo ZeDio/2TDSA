@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+requests
+pydantic
+google-genai>=2.3.0
+python-dotenv
+mistune>=3.0.0
+numpy>=1.26

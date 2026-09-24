@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disruptive Architectures — IA e IoT</title>
+  <style>
+    :root {
+      --purple: #7e57c2;
+      --purple2: #9570d0;
+      --bg: #1f2028;
+      --surface: #25262e;
+      --surface2: #2b2c34;
+      --line: #393a43;
+      --text: #e7e7eb;
+      --muted: #a9a9b4;
+      --white: #fff
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.55
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--purple);
+      box-shadow: 0 2px 12px #0003
+    }
+
+    .toprow {
+      height: 48px;
+      display: flex;
+      align-items: center;
+      padding: 0 15px;
+      gap: 16px
+    }
+
+    .brand {
+      font-size: 17px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 290px
+    }
+
+    .brand-icon {
+      font-size: 21px
+    }
+
+    .tools {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .search {
+      width: 215px;
+      height: 34px;
+      border: 0;
+      outline: 0;
+      background: #62449a;
+      color: #fff;
+      padding: 0 12px;
+      border-radius: 2px
+    }
+
+    .search::placeholder {
+      color: #ded4ef
+    }
+
+    .nav {
+      height: 36px;
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      padding: 0 15px;
+      font-size: 13px
+    }
+
+    .nav a,
+    .nav button {
+      color: #eee;
+      background: none;
+      border: 0;
+      font: inherit;
+      cursor: pointer
+    }
+
+    .nav a:hover,
+    .nav button:hover {
+      color: #fff;
+      text-decoration: underline
+    }
+
+    .container {
+      width: min(1100px, calc(100% - 36px));
+      margin: 0 auto
+    }
+
+    .hero {
+      padding: 48px 0 34px
+    }
+
+    .crumb {
+      color: #aa8bd4;
+      font-size: 13px;
+      margin-bottom: 25px
+    }
+
+    .hero h1 {
+      font-size: 30px;
+      font-weight: 400;
+      margin: 0 0 18px
+    }
+
+    .hero p {
+      max-width: 920px;
+      color: #d3d3d9;
+      margin: 7px 0
+    }
+
+    .hero strong {
+      color: #fff
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 22px
+    }
+
+    .hero-link {
+      padding: 9px 15px;
+      border: 1px solid #4b4c55;
+      background: var(--surface);
+      border-radius: 4px;
+      color: #ddd
+    }
+
+    .hero-link:hover {
+      border-color: var(--purple2);
+      color: #fff
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--line)
+    }
+
+    .section {
+      padding: 32px 0
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 18px
+    }
+
+    .section h2 {
+      font-size: 23px;
+      font-weight: 400;
+      margin: 0
+    }
+
+    .section-desc {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 4px 0 0
+    }
+
+    .count {
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px
+    }
+
+    .card {
+      display: block;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      padding: 19px;
+      min-height: 175px;
+      transition: .18s ease
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: #7554aa;
+      background: #292a32
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 15px
+    }
+
+    .tag {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: #c8b4e5
+    }
+
+    .arrow {
+      color: #9c7bd0;
+      font-size: 18px
+    }
+
+    .card h3 {
+      font-size: 17px;
+      font-weight: 500;
+      margin: 0 0 9px;
+      line-height: 1.35
+    }
+
+    .card p {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden
+    }
+
+    .empty {
+      padding: 28px;
+      text-align: center;
+      border: 1px dashed var(--line);
+      color: var(--muted)
+    }
+
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 25px
+    }
+
+    .filter {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: #ccc;
+      padding: 8px 13px;
+      border-radius: 4px;
+      cursor: pointer
+    }
+
+    .filter.active,
+    .filter:hover {
+      background: var(--purple);
+      border-color: var(--purple);
+      color: #fff
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0 42px;
+      color: #888;
+      font-size: 12px;
+      margin-top: 30px
+    }
+
+    .chat-button {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 52px;
+      height: 52px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--purple);
+      color: #fff;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 5px 18px #0006;
+      z-index: 30
+    }
+
+    .chat-panel {
+      position: fixed;
+      right: 18px;
+      bottom: 82px;
+      width: min(390px, calc(100vw - 36px));
+      height: 530px;
+      background: #22232b;
+      border: 1px solid #444550;
+      border-radius: 8px;
+      box-shadow: 0 18px 50px #0008;
+      display: none;
+      flex-direction: column;
+      z-index: 29;
+      overflow: hidden
+    }
+
+    .chat-panel.open {
+      display: flex
+    }
+
+    .chat-head {
+      height: 52px;
+      background: var(--purple);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px
+    }
+
+    .chat-head button {
+      border: 0;
+      background: none;
+      color: #fff;
+      font-size: 19px;
+      cursor: pointer
+    }
+
+    .chat-messages {
+      flex: 1;
+      overflow: auto;
+      padding: 15px
+    }
+
+    .msg {
+      margin: 0 0 12px;
+      display: flex
+    }
+
+    .msg.user {
+      justify-content: flex-end
+    }
+
+    .bubble {
+      max-width: 85%;
+      padding: 9px 12px;
+      border-radius: 7px;
+      font-size: 13px;
+      white-space: pre-wrap
+    }
+
+    .msg.assistant .bubble {
+      background: #2d2e36;
+      border: 1px solid #3c3d46
+    }
+
+    .msg.user .bubble {
+      background: #62449a;
+      color: #fff
+    }
+
+    .chat-form {
+      border-top: 1px solid #3b3c44;
+      padding: 10px;
+      display: flex;
+      gap: 8px
+    }
+
+    .chat-input {
+      flex: 1;
+      resize: none;
+      height: 40px;
+      background: #2c2d35;
+      color: #fff;
+      border: 1px solid #444550;
+      outline: none;
+      padding: 10px;
+      border-radius: 4px
+    }
+
+    .chat-send {
+      width: 42px;
+      border: 0;
+      border-radius: 4px;
+      background: var(--purple);
+      color: #fff;
+      cursor: pointer
+    }
+
+    .rag-fontes {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid #41424b;
+    }
+
+    .rag-fontes-titulo {
+      color: #aaaab5;
+      font-size: 11px;
+      margin-bottom: 6px;
+    }
+
+    .rag-fonte {
+      display: block;
+      color: #b58bea;
+      font-size: 12px;
+      margin-top: 4px;
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+
+    .rag-fonte:hover {
+      color: #d0b4ff;
+      text-decoration: underline;
+    }
+
+    @media(max-width:850px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .brand {
+        min-width: 0
+      }
+
+      .search {
+        width: 150px
+      }
+
+      .nav {
+        gap: 15px;
+        overflow: auto;
+        white-space: nowrap
+      }
+    }
+
+    @media(max-width:580px) {
+      .toprow {
+        height: auto;
+        min-height: 48px
+      }
+
+      .brand {
+        font-size: 15px
+      }
+
+      .tools {
+        display: none
+      }
+
+      .nav {
+        height: 40px
+      }
+
+      .container {
+        width: min(100% - 24px, 1100px)
+      }
+
+      .hero {
+        padding-top: 30px
+      }
+
+      .cards {
+        grid-template-columns: 1fr
+      }
+
+      .hero h1 {
+        font-size: 26px
+      }
+
+      .chat-panel {
+        height: 70vh
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="toprow">
+      <a class="brand" href="index.html"><span class="brand-icon">◈</span><span>Disruptive Architectures</span></a>
+      <div class="tools"><input id="search" class="search" placeholder="Search" aria-label="Pesquisar conteúdos"></div>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="aula.html?arquivo=agenda%2Fagenda.md">Agenda</a>
+      <button data-filter="checkpoint">CheckPoint</button>
+      <button data-filter="iot">1º Semestre - IoT</button>
+      <button data-filter="ia">2º Semestre - IA</button>
+      <button data-filter="genai">IA Generativa</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="crumb">Home</div>
+      <h1>Disruptive Architectures: IA e IoT</h1>
+      <p>Olá pessoal, bem-vindos!</p>
+      <p>Nesta página você encontrará os conteúdos da disciplina organizados para estudo e acompanhamento das aulas.</p>
+      <div class="hero-links">
+        <a class="hero-link" href="aula.html?arquivo=agenda%2Fagenda.md">Ver agenda</a>
+        <a class="hero-link" href="#conteudos">Explorar aulas</a>
+        <button class="hero-link" id="openChat" style="cursor:pointer">Conversar com a DA.IA</button>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section" id="conteudos">
+      <div class="section-head">
+        <div>
+          <h2>Conteúdos da disciplina</h2>
+          <p class="section-desc">Os cards abaixo são gerados automaticamente a partir dos arquivos
+            <strong>Markdown</strong> da pasta <strong>material</strong>.
+          </p>
+        </div>
+        <span class="count" id="count"></span>
+      </div>
+      <div class="filters">
+        <button class="filter active" data-filter="todos">Todos</button>
+        <button class="filter" data-filter="iot">IoT</button>
+        <button class="filter" data-filter="ia">Inteligência Artificial</button>
+        <button class="filter" data-filter="genai">IA Generativa</button>
+        <button class="filter" data-filter="checkpoint">Checkpoints</button>
+        <button class="filter" data-filter="agenda">Agenda</button>
+      </div>
+      <div id="sections"></div>
+      <div id="empty" class="empty" style="display:none">Nenhum conteúdo encontrado.</div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">Disruptive Architectures — conteúdos renderizados diretamente dos arquivos Markdown.</div>
+  </footer>
+
+  <button class="chat-button" id="chatButton" title="Abrir DA.IA">●</button>
+  <div class="chat-panel" id="chatPanel">
+    <div class="chat-head"><strong>DA.IA</strong><button id="closeChat">×</button></div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="msg assistant">
+        <div class="bubble">Olá! Posso ajudar com dúvidas sobre aulas, laboratórios, checkpoints e agenda.</div>
+      </div>
+    </div>
+    <form class="chat-form" id="chatForm"><textarea class="chat-input" id="chatInput"
+        placeholder="Digite sua dúvida..."></textarea><button class="chat-send">➤</button></form>
+  </div>
+
+  <script>
+    // A API roda em 8000. Assim o site funciona tanto aberto pelo navegador
+    // quanto pelo Live Server (5500/5501 etc.) ou pelo próprio Uvicorn (8000).
+    const API_BASE = (location.port === '8000' || location.port === '')
+      ? ''
+      : 'http://127.0.0.1:8000';
+    let materials = []; let activeFilter = 'todos'; let search = '';
+    const sectionsEl = document.getElementById('sections'), countEl = document.getElementById('count'), emptyEl = document.getElementById('empty');
+    const categoryOrder = ['iot', 'ia', 'genai', 'checkpoint', 'agenda', 'materiais'];
+    const categoryNames = { iot: 'Internet das Coisas (IoT)', ia: 'Inteligência Artificial', genai: 'IA Generativa', checkpoint: 'Checkpoints', agenda: 'Agenda', materiais: 'Materiais' };
+
+    function escapeHtml(v) { return String(v).replace(/[&<>'"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[c])); }
+    function filtered() { return materials.filter(m => (activeFilter === 'todos' || m.categoria_id === activeFilter) && (!search || `${m.titulo} ${m.previa} ${m.categoria}`.toLowerCase().includes(search.toLowerCase()))) }
+    function render() {
+      const list = filtered(); sectionsEl.innerHTML = ''; countEl.textContent = `${list.length} conteúdo${list.length === 1 ? '' : 's'}`; emptyEl.style.display = list.length ? 'none' : 'block';
+      for (const cat of categoryOrder) {
+        const group = list.filter(m => m.categoria_id === cat); if (!group.length) continue;
+        const sec = document.createElement('div'); sec.className = 'section'; sec.style.padding = '8px 0 28px';
+        sec.innerHTML = `<div class="section-head"><div><h2>${categoryNames[cat] || cat}</h2></div><span class="count">${group.length}</span></div><div class="cards"></div>`;
+        const cards = sec.querySelector('.cards');
+        group.forEach(m => { const a = document.createElement('a'); a.className = 'card'; a.href = m.url; a.innerHTML = `<div class="card-top"><span class="tag">${escapeHtml(m.categoria)}</span><span class="arrow">→</span></div><h3>${escapeHtml(m.titulo)}</h3><p>${escapeHtml(m.previa)}</p>`; cards.appendChild(a) });
+        sectionsEl.appendChild(sec);
+      }
+    }
+    async function load() {
+      try { const r = await fetch(`${API_BASE}/api/materials`); if (!r.ok) throw new Error(); const data = await r.json(); materials = data.materiais || []; render(); }
+      catch (e) { sectionsEl.innerHTML = '<div class="empty">Não foi possível carregar os Markdown. Inicie a API com <code>python -m uvicorn api:app --reload</code> dentro da pasta <code>ia_nossa</code>.</div>'; countEl.textContent = ''; }
+    }
+    document.querySelectorAll('[data-filter]').forEach(b => b.addEventListener('click', () => { activeFilter = b.dataset.filter; document.querySelectorAll('.filter').forEach(x => x.classList.toggle('active', x.dataset.filter === activeFilter)); render(); document.getElementById('conteudos').scrollIntoView({ behavior: 'smooth' }); }));
+    document.getElementById('search').addEventListener('input', e => { search = e.target.value; activeFilter = 'todos'; document.querySelectorAll('.filter').forEach(x => x.classList.toggle('active', x.dataset.filter === 'todos')); render(); });
+
+    const chatPanel = document.getElementById('chatPanel'), chatMessages = document.getElementById('chatMessages');
+    function addChat(text, type) {
+      const row = document.createElement('div');
+
+      row.className = `msg ${type}`;
+
+      row.innerHTML = `
+    <div class="bubble"></div>
+  `;
+
+      row.querySelector('.bubble').textContent = text;
+
+      chatMessages.appendChild(row);
+
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+
+    function addRagChat(resposta, fontes) {
+      const row = document.createElement('div');
+
+      row.className = 'msg assistant';
+
+      const bubble = document.createElement('div');
+
+      bubble.className = 'bubble';
+
+      // Resposta da IA
+      const texto = document.createElement('div');
+
+      texto.textContent = resposta || 'Sem resposta.';
+
+      bubble.appendChild(texto);
+
+
+      // Fontes recuperadas pelo RAG
+      if (fontes && fontes.length > 0) {
+
+        const fontesContainer = document.createElement('div');
+
+        fontesContainer.className = 'rag-fontes';
+
+        const titulo = document.createElement('div');
+
+        titulo.className = 'rag-fontes-titulo';
+
+        titulo.textContent = 'Fontes do material:';
+
+        fontesContainer.appendChild(titulo);
+
+
+        fontes.forEach(fonte => {
+
+          const link = document.createElement('a');
+
+          link.className = 'rag-fonte';
+
+          link.href = fonte.url;
+
+          link.target = '_blank';
+
+          link.rel = 'noopener noreferrer';
+
+          link.textContent = `📄 ${fonte.fonte}`;
+
+          fontesContainer.appendChild(link);
+
+        });
+
+
+        bubble.appendChild(fontesContainer);
+      }
+
+
+      row.appendChild(bubble);
+
+      chatMessages.appendChild(row);
+
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    document.getElementById('chatButton').onclick = () => chatPanel.classList.toggle('open'); document.getElementById('openChat').onclick = () => chatPanel.classList.add('open'); document.getElementById('closeChat').onclick = () => chatPanel.classList.remove('open');
+    document.getElementById('chatForm').addEventListener('submit', async e => {
+      e.preventDefault(); const input = document.getElementById('chatInput'); const q = input.value.trim(); if (!q) return; addChat(q, 'user'); input.value = ''; addChat('Consultando o material...', 'assistant'); const last = chatMessages.lastElementChild;
+      try { const r = await fetch(`${API_BASE}/ask`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ pergunta: q }) }); const d = await r.json(); last.remove(); if (!r.ok) throw new Error(d.detail); addRagChat(d.resposta, d.fontes); }
+      catch (err) { last.remove(); addChat('Não consegui conectar à IA. Verifique se a API está rodando.', 'assistant'); }
+    });
+    load();
+  </script>
+</body>
+
+</html>
