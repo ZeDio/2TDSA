@@ -102,7 +102,7 @@ def url_do_material(caminho: Path) -> str:
     relativo = str(relativo).replace("\\", "/")
 
     return (
-        "http://127.0.0.1:3000/"
+        "https://ultima-cp-disruptive-architectures.vercel.app/"
         "aula.html?arquivo="
         + quote(relativo)
     )

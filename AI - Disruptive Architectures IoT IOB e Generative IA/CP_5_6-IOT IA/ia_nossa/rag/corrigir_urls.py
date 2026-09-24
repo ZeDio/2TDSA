@@ -20,7 +20,7 @@ for item in indice:
     fonte = item["fonte"].replace("\\", "/")
 
     item["url"] = (
-        "http://127.0.0.1:3000/"
+        "https://ultima-cp-disruptive-architectures.vercel.app/"
         "aula.html?arquivo="
         + quote(fonte)
     )
