@@ -570,9 +570,7 @@
   <script>
     // A API roda em 8000. Assim o site funciona tanto aberto pelo navegador
     // quanto pelo Live Server (5500/5501 etc.) ou pelo próprio Uvicorn (8000).
-    const API_BASE = (location.port === '8000' || location.port === '')
-      ? ''
-      : 'http://127.0.0.1:8000';
+    const API_BASE = 'https://twotdsa.onrender.com';
     let materials = []; let activeFilter = 'todos'; let search = '';
     const sectionsEl = document.getElementById('sections'), countEl = document.getElementById('count'), emptyEl = document.getElementById('empty');
     const categoryOrder = ['iot', 'ia', 'genai', 'checkpoint', 'agenda', 'materiais'];
