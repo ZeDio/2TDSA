@@ -10,9 +10,7 @@
 <script>
 // A API roda em 8000. Assim o site funciona tanto aberto pelo navegador
 // quanto pelo Live Server (5500/5501 etc.) ou pelo próprio Uvicorn (8000).
-const API_BASE = (location.port === '8000' || location.port === '')
-  ? ''
-  : 'http://127.0.0.1:8000';
+const API_BASE = 'https://twotdsa.onrender.com';
 const params=new URLSearchParams(location.search);const arquivo=params.get('arquivo');const content=document.getElementById('content');const meta=document.getElementById('meta');
 if(!arquivo){content.innerHTML='<div class="error">Nenhum arquivo Markdown foi informado.</div>';meta.textContent='';}
 else{fetch(`${API_BASE}/api/material?arquivo=${encodeURIComponent(arquivo)}`).then(async r=>{const d=await r.json();if(!r.ok)throw new Error(d.detail||'Erro');document.title=d.titulo+' — Disruptive Architectures';meta.textContent=`${d.categoria} · ${d.arquivo}`;content.innerHTML=d.conteudo;}).catch(e=>{meta.textContent='';content.innerHTML=`<div class="error">Não foi possível carregar este conteúdo.<br><br>${e.message}</div>`;});}
